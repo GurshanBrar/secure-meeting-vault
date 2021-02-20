@@ -4,12 +4,12 @@ from django.db import models
 
 
 class Group(models.Model):
-    group_id = Models.SlugField(max_length=7, blank=False)
-    meeting_url = Models.URLField(
-        verbose_name='Meeting Link', blank=true, help_text="Enter the meeting link")
+    group_id = models.SlugField(max_length=7, blank=False)
+    meeting_url = models.URLField(
+        verbose_name='Meeting Link', blank=False, help_text="Enter the meeting link")
 
 
 class Member(models.Model):
-    name = Models.CharField(max_length=200)
-    encoded_file = Models.TextField()
-    group = models.ForeignKey(Group, on_delete=Models.CASCADE)
+    name = models.CharField(max_length=200, blank=False)
+    encoded_file = models.TextField()
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
