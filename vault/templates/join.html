@@ -7,51 +7,37 @@
 {% block content %}
 
 <h1>Join meeting</h1>
-<!-- CSS -->
-<style>
-    #my_camera {
-        width: 320px;
-        height: 240px;
-        border: 1px solid black;
-    }
-</style>
+<form action=" " method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form }}
+</form>
 
-<!-- -->
-<div id="my_camera"></div>
-<input type=button value="Take Snapshot" onClick="take_snapshot()">
-
-<div id="results"></div>
-
-<!-- Script -->
 <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+<video id="webcam" autoplay playsinline width="640" height="480"></video>
+<canvas id="canvas" class="d-none"></canvas>
+<button onclick = "takepic()">SNAP!</button>
+<script>
+const webcamElement = document.getElementById('webcam');
+const canvasElement = document.getElementById('canvas');
+const myContext = canvasElement.getContext('2d');
+const webcam = new Webcam(webcamElement, 'user', canvasElement);
+webcam.start()
+   .then(result =>{
+      console.log("webcam started");
+   })
+   .catch(err => {
+       console.log(err);
+   });
+function takepic(){
+    var picture = webcam.snap();
+    console.log(picture);
+    document.getElementById('webcam').pause();
+    let formTag = document.querySelector('form');
+    document.querySelector('#id_image').value = picture.slice(22);
+    formTag.submit();
 
-<!-- Code to handle taking the snapshot and displaying it locally -->
-<script language="JavaScript">
+    //picture.onload = () => myContext.drawImage(picture, 0, 0);
+}
 
-    // Configure a few settings and attach camera
-    Webcam.set({
-        width: 320,
-        height: 240,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
-    Webcam.attach('#my_camera');
-
-    // preload shutter audio clip
-    var shutter = new Audio();
-    shutter.autoplay = true;
-    shutter.src = navigator.userAgent.match(/Firefox/) ? 'shutter.ogg' : 'shutter.mp3';
-
-    function take_snapshot() {
-        // play sound effect
-        shutter.play();
-
-        // take snapshot and get image data
-        Webcam.snap(function (data_uri) {
-            // display results in page
-            document.getElementById('results').innerHTML =
-                '<img src="' + data_uri + '"/>';
-        });
-    }
 </script>
 {% endblock %}
