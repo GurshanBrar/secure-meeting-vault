@@ -1,9 +1,166 @@
-{% extends "base_generic.html" %}
-{% load static %}
-{% block title %}
-<title>Home page</title>
-{% endblock %}
+<!DOCTYPE html>
+<html> 
+<title>Vault Home Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+body {
+  font-family: "Open Sans";
+}
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
 
-{% block content %}
-<h1>Home page!</h1>
-{% endblock %}
+
+}
+
+.button1 {
+  background-color: #689775; 
+  color: black; 
+  border: none;
+  height: 200px;
+  width: 400px;
+  border-radius: 12px;
+}
+
+.button1:hover {
+  background-color: #907163;
+  color: white;
+}
+
+.button2 {
+  background-color: #689775;  
+  color: black; 
+  border: none;
+  height: 200px;
+  width: 400px;
+  border-radius: 12px;
+}
+
+.button2:hover {
+  background-color: #907163;
+  color: white;
+}
+
+.btn-container {
+  font-size: 15px;
+  min-height: 50px;
+  width: 100%;
+  background: black;
+  display: grid;  
+  grid-template-columns:100px, 100px;
+  grid-template-rows: 1fr;
+
+}
+
+
+.container {
+    font-size: 45px;
+    font-family: Oswald;
+    min-height: 300px;
+    width: 100%;
+    background: #222222;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-items: center;
+    margin-top: 75px;
+}   
+#navbar {
+  background: #000000;
+  color: #C7493A;
+  font-size: 25px;
+}
+
+#titlename {
+  color: #C7493A;
+}
+
+#blocktext {
+  background: #C7493A;
+}
+body {
+  background-color: #222222;
+}
+</style>
+
+<body>
+
+
+<div class="w3-bar  w3-hide-small" id="navbar">
+  <a href="/#" class="w3-bar-item w3-button">Home</a>
+  <a href="/#about" class="w3-bar-item w3-button">About</a>
+  <a href="/#team" class="w3-bar-item w3-button">Team</a>
+  
+</div>
+  
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48" id="titlename">
+    <h1 class="w3-xxxxlarge" style="font-size: 140px;"><b>Vault</b></h1>
+    <h6 style = "font-size: 20px;">Welcome to <span class="w3-tag" id="blocktext">Additional Security</span></h6>
+  </header>
+
+
+  <div class="container">
+    <div class="set-up-button" >
+    <a href="{% url 'create-count' %}">
+      <button class="button button1">Schedule Meeting</button></a>
+    </div>
+    <div class="join-button">
+      <a href="{% url 'join' %}"><button class="button button2">Join ‎‎Meeting</button></a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <hr>
+  <br>
+
+  <div style = "margin-left: 40px; margin-right: 40px; color: white;">
+    <h1 id = "about">About</h1>
+    <p style = "font-family: "Lucida Console", "Courier New", monospace; text-align:center; ">Vault is a website whose purpose is to bring more security to online meeting platforms. With the pandemic upon us, schools and organizations have scrambled to find an alternative to prevent learning loss, and to continue the same quality of education. However, there has been a persistent plague to the quality of education, Zoom Bombers. This is the common name that people refer to those who join a meeting that they are not invited to. With confusing settings and gimmicks to meetings, it has become easy for people to invade other meets. This is where Vault comes in. We provide a level of security that is easy to understand and follow. We use neural networks and facial recognition software to ensure that those here to learn and discuss are the same ones that are being admitted into the meeting. We help simplify technologies to those who are inexperienced, and make the dangerous place that is the internet, a safer place.</p>
+  </div>
+  <br>
+  <hr>
+  <br>
+
+  <div style = "margin-right: 40px; margin-left: 40px; color: white;">
+    <h1 style = "text-align: right; margin-right: 30px;" id = "team" >Who are we?</h1>
+    <p style = "font-family: "Lucida Console", "Courier New", monospace;">We are Sophomores at Mountain House High School and are part of the Hackathon Team. We are passionate about Computer Science and specalize in microframeworks and algorithms. We are always ready to learn and never give up. Our inspiration behind this project was COVID-19, and how society has shifted to Online Media platforms. We will continue developing programs, and bringing new unique ideas to the community. <p>
+
+  </div>
+  <br>
+  <hr>
+  <br>
+
+    <!--
+    <div style = "margin-right: 40px; margin-left: 40px; color: white;">
+    <h1 style = "text-align: right; margin-right: 30px;" id = "team" >Works Cited (Websites for Inspirations)</h1>
+    <p style = "font-family: "Lucida Console", "Courier New", monospace;"> https://www.w3schools.com/tags/tag_button.asp <hr>
+    https://medium.com/swlh/how-to-access-webcam-and-take-picture-with-javascript-b9116a983d78#:~:text=Just%20call%20webcam.,download%20and%20save%20the%20snapshot <hr>
+    https://codepen.io/lucasyem/pen/ZEEYKdj <hr> 
+    https://coolors.co/ <hr>
+    </p>
+  -->
+</body>
+</html>

@@ -1,21 +1,80 @@
-{% extends "base_generic.html" %}
-{% load static %}
-{% block title %}
-<title>Join meeting</title>
-{% endblock %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Vault - Join Meeting</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    
+  </head>
+  <style>
+.invalid-feedback{
+    color: red;
+}
+body {
+  font-family: 'Poppins', sans-serif; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  background-color:#222222;
+}
+textarea {
+    display: none;
+}
+video {
+    padding-top: 50px;
+    display: block;
+    
+}
+#canvas {
+    display: none;
+}
+.button1 {
+  background-color: #689775; 
+  color: black; 
+  border: none;
+  height: 75px;
+  width: 250px;
+  border-radius: 12px;
+}
 
-{% block content %}
-
-<h1>Join meeting</h1>
-<form action=" " method="post" enctype="multipart/form-data">
+.button1:hover {
+  background-color: #907163;
+  color: white;
+}
+  </style>
+  <body>
+    <div class="w3-bar w3-hide-small" style="background: black; color: #C7493A;">
+      <a href="/#" class="w3-bar-item w3-button">Home</a>
+      <a href="/#about" class="w3-bar-item w3-button">About</a>
+      <a href="/#team" class="w3-bar-item w3-button">Team</a>
+    </div>
+    <script src="script.js">
+    </script>
+    <hr>
+    <hr>
+    <hr>
+      <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Join Meeting!</b></h1>
+    <h6> This is where you can <span class="w3-tag"> join with security! </span></h6>
+    <form action=" " method="post" enctype="multipart/form-data">
 {% csrf_token %}
-{{ form }}
+{{ form|crispy }}
 </form>
 
-<script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+</div>
+  <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
 <video id="webcam" autoplay playsinline width="640" height="480"></video>
 <canvas id="canvas" class="d-none"></canvas>
-<button onclick = "takepic()">SNAP!</button>
+<button style="margin-top: 15px;" class="button1" type="submit" onclick = "takepic()">Snap!</button>
 <script>
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
@@ -40,4 +99,6 @@ function takepic(){
 }
 
 </script>
-{% endblock %}
+  </header>
+  </body>
+</html>

@@ -9,7 +9,7 @@ class JoinForm(forms.Form):
 
 class CreateForm(forms.Form):
     meeting_url = forms.URLField(
-       help_text="Enter the meeting link", required=True)
+       required=True)
 
     def __init__(self, *args, **kwargs):
         members = int(kwargs['member_count'])

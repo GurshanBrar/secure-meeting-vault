@@ -62,7 +62,6 @@ def create(request, member_count=None):
                 string_person = base64.binascii.b2a_base64(person).decode("ascii")
 
                 member = Member.objects.create(name=name, encoded_file = string_person, group = group)
-            # do further validation if needed, but we can worry about that later
             return redirect('create-success', group_id=group_id)
 
     else:
@@ -87,7 +86,10 @@ def join(request):
                 return redirect('join-failed')
             members = group.member_set.all()
             matching_names = members.filter(name__exact=name)
-            user = face_recognition.face_encodings(face_recognition.load_image_file(image))[0]
+            try:
+                user = face_recognition.face_encodings(face_recognition.load_image_file(image))[0]
+            except:
+                return redirect('join-failed')
             for i in matching_names:
                 test = np.frombuffer(base64.binascii.a2b_base64(i.encoded_file.encode("ascii")))
                 if face_recognition.compare_faces([test], user):

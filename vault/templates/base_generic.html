@@ -9,7 +9,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    {% block title %}<title>Secure Meeting Vault</title>{% endblock %}
+    {% block title %}<title>Secure Meeting Vault</title>
+    {% block head %}{% endblock %}
+    {% endblock %}
 </head>
 
 <body onload="init()">
