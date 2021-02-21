@@ -18,3 +18,15 @@ We want to attach the website to an actual domain. The domain we are planning to
 The way to run this is to download the repository and run this command in the correct directory:
 
      python manage.py runserver
+     
+## Security
+The Django framework provides the following security features. More information can be found on Django's official [Security Overview](https://docs.djangoproject.com/en/3.1/topics/security/).
+
+- XSS protection (by implementing proper character escaping)
+- CSRF protection using secret tokens
+- SQL Injection Protection
+- Clickjacking Protection
+
+## Built With
+- [Django](https://www.djangoproject.com/)
+
