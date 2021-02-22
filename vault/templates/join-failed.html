@@ -25,7 +25,7 @@
   background: #C7493A;
 }
 body {
-  font-family: 'Poppins', sans-serif; 
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,19 +41,24 @@ body {
   color: #C7493A;
 }
 .button1 {
-  background-color: #689775; 
-  color: black; 
+  background-color: #689775;
+  color: black;
   border: none;
   height: 75px;
   width: 250px;
   border-radius: 12px;
+}
+
+.button1:hover {
+  background-color: #907163;
+  color: white;
 }
   </style>
   <body>
     <div class="w3-bar w3-hide-small" id="navbar" style="background-color: black; color: #C7493A;">
       <a href="/#" class="w3-bar-item w3-button">Home</a>
       <a href="/#about" class="w3-bar-item w3-button">About</a>
-      <a href="/#team" class="w3-bar-item w3-button">Team</a>     
+      <a href="/#team" class="w3-bar-item w3-button">Team</a>
     </div>
     <script src="script.js"></script>
     <hr>
@@ -66,9 +71,9 @@ body {
       </h6>
        <a href="{% url 'join' %}"><button style = "margin-top: 15px;" class="button1" type="submit" >Retry!</button></a>
     </div>
-    
-   
 
-  
+
+
+
   </body>
 </html>
